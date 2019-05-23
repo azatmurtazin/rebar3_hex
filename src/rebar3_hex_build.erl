@@ -174,7 +174,7 @@ build(_AppDir, _Name, _Version, _Deps, Excluded, _AppDetails, _, _) ->
 
 %% Internal functions
 
-build_package(Metadata, PackageFiles, HexConfig, Name, Version) ->
+build_package(Metadata, PackageFiles, _HexConfig, Name, Version) ->
     {ok, {Tarball, Checksum}} = hex_tarball:create(Metadata, PackageFiles),
     Filename = lists:flatten(io_lib:format("~s-~s.tar", [Name, Version])),
     Ch16 = lists:flatten([integer_to_list(X,16) || <<X>> <= Checksum]),
